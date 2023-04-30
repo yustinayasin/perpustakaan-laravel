@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->longText("alamat");
-            $table->rememberToken();
+        Schema::create('authorities_users', function (Blueprint $table) {
+            $table->unsignedBigInteger("id_authority");
+            $table->unsignedBigInteger("id_user");
+
+            $table->foreign("id_authority")->references("id")->on("authorities");
+            $table->foreign("id_user")->references("id")->on("users");
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('authorities_users');
     }
 };
