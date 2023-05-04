@@ -20,7 +20,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|min:10',
-            'confirmPassword' => 'required|min:10',
+            'confirm_password' => 'required|min:10',
             'name' => 'required'
         ]);
 
@@ -35,7 +35,7 @@ class UserController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'User berhasil diubah',
+            'message' => 'User berhasil disimpan',
             'data' => [
                 'email' => $user->email,
                 'name' => $user->name
@@ -47,7 +47,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|min:10',
-            'confirmPassword' => 'required|min:10',
+            'confirm_password' => 'required|min:10',
             'name' => 'required'
         ]);
 
@@ -75,9 +75,9 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $siswa = Siswa::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        $siswa->delete();
+        $user->delete();
 
         return response()->json([
             'message' => 'User berhasil dihapus'
