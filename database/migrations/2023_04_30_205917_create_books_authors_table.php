@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->longText("alamat");
-            $table->rememberToken();
+        Schema::create('books_authors', function (Blueprint $table) {
+            $table->unsignedBigInteger("id_book");
+            $table->unsignedBigInteger("id_author");
+
+            $table->foreign("id_book")->references("id")->on("books");
+            $table->foreign("id_author")->references("id")->on("authors");
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('books_authors');
     }
 };
