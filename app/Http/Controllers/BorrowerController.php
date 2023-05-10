@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Borrower;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class BorrowerController extends Controller
