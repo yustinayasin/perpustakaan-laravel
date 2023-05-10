@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class BorrowerController extends Controller
 {
     public function index($id) {
-        $user = User::where('id', $id);
+        $borrower = Borrower::where('id', $id);
 
-        return $user;
+        return $borrower;
     }
 
     public function store(Request $request, $idPengguna, $idBuku) {
